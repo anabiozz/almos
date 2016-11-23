@@ -3,16 +3,22 @@
 
 #include "types.h"
 
-uint8 inportb (uint16 _port)
-{
-    uint8 rv;
-    __asm__ __volatile__ ("inb %1, %0" : "=a" (rv) : "dN" (_port));
-    return rv;
-}
+/**
+ * @brief [brief description]
+ * @details [long description]
+ * 
+ * @param _port [description]
+ * @return [description]
+ */
+uint8 inportb (uint16 _port);
 
-void outportb (uint16 _port, uint8 _data)
-{
-    __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
-}
+/**
+ * @brief [brief description]
+ * @details [long description]
+ * 
+ * @param _port [description]
+ * @param _data [description]
+ */
+void outportb (uint16 _port, uint8 _data);
 
 #endif

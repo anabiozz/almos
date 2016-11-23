@@ -1,6 +1,10 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+/**
+ * predefine types
+ */
+
 typedef signed char int8;
 typedef unsigned char uint8;
 

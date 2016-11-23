@@ -3,12 +3,24 @@
 
 #include "types.h"
 
-uint16 strlength(string ch)
-{
-    uint16 i = 1;
-    while(ch[i++]);
-    return --i;
-}
+/**
+ * @brief [brief description]
+ * @details [long description]
+ * 
+ * @param ch [description]
+ * @return [description]
+ */
+extern uint16 str_len(string ch);
 
+/**
+ * @brief [brief description]
+ * @details [long description]
+ * 
+ * @param ch1 [description]
+ * @param ch2 [description]
+ * 
+ * @return [description]
+ */
+extern uint8 str_cmp(string ch1, string ch2);
 
 #endif
