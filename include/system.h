@@ -10,7 +10,7 @@
  * @param _port [description]
  * @return [description]
  */
-uint8 inportb (uint16 _port);
+uint8_t inportb (uint16_t _port);
 
 /**
  * @brief [brief description]
@@ -19,6 +19,6 @@ uint8 inportb (uint16 _port);
  * @param _port [description]
  * @param _data [description]
  */
-void outportb (uint16 _port, uint8 _data);
+void outportb (uint16_t _port, uint8_t _data);
 
 #endif

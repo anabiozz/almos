@@ -6,8 +6,8 @@ string read_str()
 {
     char buff;
     string buffstr;
-    uint8 i = 0;
-    uint8 reading = 1;
+    uint8_t i = 0;
+    uint8_t reading = 1;
     while(reading)
     {
         if(inportb(0x64) & 0x1)

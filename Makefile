@@ -14,6 +14,8 @@ NASM=nasm
 CFLAGS = -c -m32 -I include/
 LDFLAGS= -m elf_i386 -T link.ld
 
+MD=mkdir -p
+
 kernel.bin: $(OBJECTS) $(OBJECTS_ASM)
 	$(LD) $(LDFLAGS) $(OBJECTS) $(OBJECTS_ASM) -o vidar/boot/kernel.bin
 
@@ -21,8 +23,9 @@ $(BUILDDIR)/%.o: $(SOURCEDIR)/%.asm
 	$(NASM) -f elf32 -o $@ $<
 
 $(BUILDDIR)/%.o: $(SOURCEDIR)/%.c
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ $<
 
 clear:
-	rm -f $(BUILDDIR)/*
+	rm -fr $(BUILDDIR)/*
 	rm -f vidar/boot/kernel.bin

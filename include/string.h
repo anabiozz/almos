@@ -10,7 +10,7 @@
  * @param ch [description]
  * @return [description]
  */
-extern uint16 str_len(string ch);
+extern uint16_t str_len(string ch);
 
 /**
  * @brief [brief description]
@@ -21,6 +21,6 @@ extern uint16 str_len(string ch);
  * 
  * @return [description]
  */
-extern uint8 str_cmp(string ch1, string ch2);
+extern uint8_t str_cmp(string ch1, string ch2);
 
 #endif

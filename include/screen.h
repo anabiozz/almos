@@ -14,7 +14,7 @@
  * @param from [description]
  * @param to [description]
  */
-extern void clear_line(uint8 from, uint8 to);
+extern void clear_line(uint8_t from, uint8_t to);
 
 /**
  * @brief [brief description]
@@ -34,7 +34,7 @@ extern void clear_screen();
  * 
  * @param line_number [description]
  */
-extern void scroll_up(uint8 line_number);
+extern void scroll_up(uint8_t line_number);
 
 /**
  * @brief [brief description]

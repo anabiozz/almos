@@ -3,11 +3,11 @@
 #include "string.h"
 
 int cursorX = 0, cursorY = 0;
-const uint8 sw = 80, sh = 25, sd = 2; //we define the screen width, height, depth
+const uint8_t sw = 80, sh = 25, sd = 2; //we define the screen width, height, depth
 
-void clear_line(uint8 from, uint8 to)
+void clear_line(uint8_t from, uint8_t to)
 {
-    uint16 i = sw * from * sd;
+    uint16_t i = sw * from * sd;
     string vidmem = (string)0xb8000;
     for(i; i<(sw * (to+1) * sd); i++) 
     {
@@ -35,10 +35,10 @@ void clear_screen()
     update_cursor();
 }
 
-void scroll_up(uint8 lineNumber)
+void scroll_up(uint8_t lineNumber)
 {
     string vidmem = (string) 0xb8000;
-    uint16 i = 0;
+    uint16_t i = 0;
     for(i; i< sw * (sh-1) * 2;i++) {
         vidmem[i] = vidmem[i + sw * sd * lineNumber];
     }
@@ -98,8 +98,8 @@ void print_char(char c)
 
 void print(string ch) 
 {
-    uint16 i = 0;
-    uint8 length = str_len(ch)-1;
+    uint16_t i = 0;
+    uint8_t length = str_len(ch)-1;
 
     for(i;i<length;i++) {
         print_char(ch[i]);
