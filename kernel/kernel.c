@@ -1,29 +1,36 @@
 #include "screen.h"
-#include "keyboard.h"
-#include "types.h"
-#include "string.h"
+#include "drivers/keyboard.h"
+#include "common/types.h"
+#include "strings/string.h"
+#include "hardware/isr.h"
 
-kmain(void* multiboot_structure, uint32_t magic_number)
+int kmain()
 {
     clear_screen();
+    isr_install();
+    uint32_t a = 5/0;
     print("Welcome to ALMOS operation system");
+    print_char('\n');
     while(1)
     {
         print("\nALMOS >");
-        PrintfKeyboardEventHandler kbhandler;
-        keyboard(&interrupts, &kbhandler);
-       /* string ch = read_str();
-        if(str_cmp(ch,"cmd")) 
+       
+        string ch = read_str();
+        print("\n");
+        print(ch);
+        if(strcmp(ch,"cmd")) 
         {
             print("\nYou are allready in cmd");
         }
-        else if(str_cmp(ch,"clear"))
+        else if(strcmp(ch,"clear"))
         {
             clear_screen();
         }
         else
         {
             print("\nBad command");
-        }*/
+        }
     }
+
+    return 0;
 }

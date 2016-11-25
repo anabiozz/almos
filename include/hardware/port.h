@@ -1,23 +1,22 @@
 #ifndef PORT_H
 #define PORT_H
 
-#include "types.h"
+#include "common/types.h"
 
-typedef struct dataport {
+typedef struct {
+    uint16_t port;
+    uint8_t data;
 
-    uint16_t _port;
-    uint8_t _data;
-
-    void (*Write8)();
-    void (*Read8)(uint16_t portnumber);
+    void (*Write8)(uint16_t port, uint8_t _data);
+    uint8_t (*Read8)(uint16_t port);
 } Dataport;
 
-typedef struct commandport {
-    uint16_t _port;
-    uint8_t _data;
+typedef struct {
+    uint16_t port;
+    uint8_t data;
 
-    void (*Write8)();
-    void (*Read8)(uint16_t portnumber);
+    void (*Write8)(uint16_t port, uint8_t _data);
+    uint8_t (*Read8)(uint16_t port);
 } Commandport;
 
 typedef struct keyboard_event_handler {

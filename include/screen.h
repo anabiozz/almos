@@ -5,7 +5,7 @@
     For interaction with a display 
 */
 
-#include "types.h"
+#include "common/types.h"
 
 /**
  * @brief [brief description]
@@ -14,19 +14,19 @@
  * @param from [description]
  * @param to [description]
  */
-extern void clear_line(uint8_t from, uint8_t to);
+void clear_line(uint8_t from, uint8_t to);
 
 /**
  * @brief [brief description]
  * @details [long description]
  */
-extern void update_cursor();
+void update_cursor();
 
 /**
  * @brief [brief description]
  * @details [long description]
  */
-extern void clear_screen();
+void clear_screen();
 
 /**
  * @brief [brief description]
@@ -34,13 +34,13 @@ extern void clear_screen();
  * 
  * @param line_number [description]
  */
-extern void scroll_up(uint8_t line_number);
+void scroll_up(uint8_t line_number);
 
 /**
  * @brief [brief description]
  * @details [long description]
  */
-extern void new_line_check();
+void new_line_check();
 
 /**
  * @brief [brief description]
@@ -48,7 +48,7 @@ extern void new_line_check();
  * 
  * @param c [description]
  */
-extern void print_char(char c);
+void print_char(char c);
 
 /**
  * @brief [brief description]
@@ -56,6 +56,6 @@ extern void print_char(char c);
  * 
  * @param ch [description]
  */
-extern void print(string ch);
+void print(string ch);
 
 #endif

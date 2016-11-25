@@ -1,23 +1,35 @@
 #include "hardware/port.h"
 
 KeyboardEventHandler *handler; 
+Dataport dataport;
+Commandport commandport;
 
-//dataport = 0x60;
-//commandport = 0x64;
+void init()
+{
+    dataport.port = 0x60;
+    commandport.port = 0x64;
+
+    dataport.Write8 = port_8bit_write;
+    dataport.Read8 = port_8bit_read;
+
+    commandport.Write8 = port_8bit_write;
+    commandport.Read8 = port_8bit_read;
+}
 
 void activate()
 {
-    while(port_8bit_read(0x64) & 0x1)
-        port_8bit_read(0x64);
-    port_8bit_write(0x64, 0xae); // activate interrupts
-    port_8bit_write(0x64, 0x20); // command 0x20 = read controller command byte
-    uint8_t status = (Read8(0x60) | 1) & ~0x10;
-    port_8bit_write(0x64, 0x60); // command 0x60 = set controller command byte
-    port_8bit_write(0x60, status);
-    port_8bit_write(0x60, 0xf4);
+    init();
+    while(commandport.Read8(commandport.port) & 0x1)
+        dataport.Read8(dataport.port);
+    commandport.Write8(commandport.port, 0xae); // activate interrupts
+    commandport.Write8(commandport.port, 0x20); // command 0x20 = read controller command byte
+    uint8_t status = (dataport.Read8(dataport.port) | 1) & ~0x10;
+    commandport.Write8(commandport.port, 0x60); // command 0x60 = set controller command byte
+    dataport.Write8(dataport.port, status);
+    dataport.Write8(dataport.port, 0xf4);
 }
 
-uint32_t handle_interrupt(uint32_t esp, KeyboardEventHandler *handler)
+/*uint32_t handle_interrupt(uint32_t esp, KeyboardEventHandler *handler)
 {
     uint8_t key = port_8bit_read(0x60);
     
@@ -88,4 +100,4 @@ uint32_t handle_interrupt(uint32_t esp, KeyboardEventHandler *handler)
 keyboard(InterruptManager* manager, KeyboardEventHandler *handler)
 {
     handle_interrupt();
-}
+}*/

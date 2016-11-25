@@ -1,7 +1,7 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include "types.h"
+#include "common/types.h"
 
 /**
  * @brief [brief description]

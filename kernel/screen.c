@@ -1,6 +1,6 @@
 #include "screen.h"
 #include "system.h"
-#include "string.h"
+#include "strings/string.h"
 
 int cursorX = 0, cursorY = 0;
 const uint8_t sw = 80, sh = 25, sd = 2; //we define the screen width, height, depth
@@ -99,7 +99,7 @@ void print_char(char c)
 void print(string ch) 
 {
     uint16_t i = 0;
-    uint8_t length = str_len(ch)-1;
+    uint8_t length = strlen(ch)-1;
 
     for(i;i<length;i++) {
         print_char(ch[i]);
