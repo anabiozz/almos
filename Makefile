@@ -1,3 +1,5 @@
+include init/*.mk
+
 SOURCEDIR=kernel
 BUILDDIR=obj
 SOURCEDIR_CLIB=clib
@@ -11,6 +13,9 @@ OBJECTS_ASM=$(patsubst $(SOURCEDIR)/%.asm, $(BUILDDIR)/%.o, $(SOURCES_ASM))
 SOURCES_CLIB=$(shell find $(SOURCEDIR_CLIB) -name '*.c')
 OBJECTS_CLIB=$(patsubst $(SOURCEDIR_CLIB)/%.c, $(BUILDDIR)/clib/%.o, $(SOURCES_CLIB))
 
+OBJ += \
+	$(OBJECTS) $(OBJECTS_ASM) $(OBJECTS_CLIB)
+
 CC=gcc
 LD=ld
 NASM=nasm
@@ -21,8 +26,8 @@ LDFLAGS= -m elf_i386 -T link.ld
 
 MD=mkdir -p
 
-kernel.bin: $(OBJECTS) $(OBJECTS_ASM) $(OBJECTS_CLIB)
-	$(LD) $(LDFLAGS) $(OBJECTS) $(OBJECTS_ASM) $(OBJECTS_CLIB) -o vidar/boot/kernel.bin
+kernel.bin: $(OBJ)
+	$(LD) $(LDFLAGS) $(OBJ) -o vidar/boot/kernel.bin
 
 $(BUILDDIR)/%.o: $(SOURCEDIR)/%.asm
 	$(NASM) -f elf32 -o $@ $<

@@ -202,7 +202,6 @@ void isr31()
     __asm__ __volatile__("hlt");
 }
 
-
 /*End Handlers*/
 
 
