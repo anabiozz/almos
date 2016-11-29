@@ -25,7 +25,7 @@ void int_to_ascii(int n, char str[])
     str[i] = '\0';
 }
 
-static inline void *__memcpy(void *to, const void *from, size_t n)
+/*static inline void *__memcpy(void *to, const void *from, size_t n)
 {
     int d0, d1, d2;
     asm volatile("rep ; movsl\n\t"
@@ -38,4 +38,4 @@ static inline void *__memcpy(void *to, const void *from, size_t n)
              : "0" (n / 4), "g" (n), "1" ((long)to), "2" ((long)from)
              : "memory");
     return to;
-}
+}*/
