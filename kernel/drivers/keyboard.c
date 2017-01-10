@@ -1,6 +1,4 @@
-#include "screen.h"
-#include "system.h"
-#include "common/types.h"
+#include "drivers/keyboard.h"
 
 string read_str()
 {

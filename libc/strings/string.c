@@ -2,9 +2,9 @@
 
 uint16_t strlen(string ch)
 {
-    uint16_t i = 1;
+    uint16_t i = 0;
     while(ch[i++]);
-    return --i;
+    return i-1;
 }
 
 uint8_t strcmp(string ch1, string ch2)
